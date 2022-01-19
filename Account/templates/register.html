@@ -1,5 +1,13 @@
+{% block content %}
+{% include 'shop/navbar.html' %}
 
-
-<form method="post">
-    {{ form }}
+<div class="container">
+{% block title %} Vytvořit účet {% endblock %}
+    <form method="POST" class="form-group">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit" class="btn btn-success">Registrovat</button>
 </form>
+</div>
+
+{% endblock %}

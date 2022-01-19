@@ -1,11 +1,18 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import login, authenticate
+from Account.forms import RegistrationForm
 
 
-def register(request):
-    form = UserCreationForm()
-    return render(request, 'register.html'{'form': form})
+def register(response):
+    if response.method == "POST":
+        form = RegistrationForm(response.POST)
+        if form.is_valid():
+            form.save()
+        return redirect('index')
+    else:
+        form = RegistrationForm()
 
-def login(request):
-    return render(request, 'login.html')
+    return render(response, "register.html", {"form":form})
+
+
+
