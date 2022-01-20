@@ -20,7 +20,6 @@
 <body>
 
 <div class="container">
-
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
         <a class="navbar-brand" href="{% url 'index' %}">E-Shop</a>
@@ -29,9 +28,6 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="">Obchod</a>
-            </li>
             <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Kategorie
@@ -42,24 +38,38 @@
             <li><a class="dropdown-item" href="#">Něco dalšího</a></li>
           </ul>
         </li>
+              <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="">O nás</a>
+            </li>
           </ul>
         </div>
           <div class="float-right">
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-           <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/register">Registrace</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Přihlásit</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Odhlásit</a>
-            </li>
-            <li class="nav-item">
-              <button id="cart"type="button" class="btn btn-success" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-content="Bottom popover">Košík</button>
-            </li>
+                  {% if user.is_authenticated %}
+                       <li class="nav-item">
+                      <a class="nav-link active" aria-current="page" href="#">Můj profil</a>
+                    </li>
+                       <li class="nav-item">
+                      <a class="nav-link active" aria-current="page" href="/logout">Odhlásit</a>
+                    </li>
+
+                  {% else %}
+                      <li class="nav-item">
+                      <a class="nav-link active" aria-current="page" href="/register">Registrace</a>
+                   </li>
+                    <li class="nav-item">
+                      <a class="nav-link active" aria-current="page" href="/login">Přihlásit</a>
+                    </li>
+
+                  {% endif %}
+                    <li class="nav-item">
+                      <button id="cart"type="button" class="btn btn-success" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-content="Bottom popover">Košík</button>
+                    </li>
+
+              </ul>
           </div>
-      </div>
+
+
     </nav>
 </div>
 </body>

@@ -1,0 +1,12 @@
+{% block title %}
+    Přihlášení
+{% endblock %}
+
+{% block content %}
+    <form method="post" class="form-group">
+        {% csrf_token %}
+        {{form}}
+        <button type="submit" class="btn btn-success">Přihlásit</button>
+        <p>Registrace <a href="/register">Zde</a></p>
+    </form>
+{% endblock %}
