@@ -1,11 +1,13 @@
+{% extends 'shop/base.html' %}
+{% load crispy_forms_tags %}
+
 {% block content %}
-{% include 'shop/navbar.html' %}
 
 <div class="container">
 {% block title %} Vytvořit účet {% endblock %}
     <form method="POST" class="form-group">
         {% csrf_token %}
-        {{ form }}
+        {{ form|crispy }}
         <button type="submit" class="btn btn-success">Registrovat</button>
 </form>
 </div>

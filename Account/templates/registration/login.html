@@ -1,12 +1,16 @@
+{% extends 'shop/base.html' %}
+{% load crispy_forms_tags %}
 {% block title %}
     Přihlášení
 {% endblock %}
 
 {% block content %}
+<div class="container">
     <form method="post" class="form-group">
         {% csrf_token %}
-        {{form}}
+        {{form|crispy}}
         <button type="submit" class="btn btn-success">Přihlásit</button>
         <p>Registrace <a href="/register">Zde</a></p>
     </form>
+</div>
 {% endblock %}
